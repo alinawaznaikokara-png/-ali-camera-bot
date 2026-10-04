@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ALI CAMERA BOT</title>
+</head>
+<body>
+  <h2>Camera Permission Demo</h2>
+  <p>Camera use karne ke liye neeche button dabayein.</p>
+
+  <button onclick="startCamera()">Allow Camera</button>
+
+  <br><br>
+  <video id="camera" autoplay playsinline width="100%"></video>
+
+  <script>
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true
+        });
+        document.getElementById("camera").srcObject = stream;
+      } catch (error) {
+        alert("Camera permission denied.");
+      }
+    }
+  </script>
+</body>
+</html>
